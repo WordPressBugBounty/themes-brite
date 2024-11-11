@@ -7,8 +7,47 @@ use ColibriWP\Theme\Translations;
 
 $brite_front_page_designs = array();
 $brite_slug        = "colibri-wp-page-info";
+$default_front_page_designs =   array(
 
-foreach ( Defaults::get( 'front_page_designs', array() ) as $design ) {
+    array(
+        'name'  => __("Modern", 'brite'),
+        "index" => 3,
+        "meta"  => array(
+            "slug"    => "modern",
+            "version" => "v2"
+        )
+    ),
+
+    array(
+        'name'    => __("Modern", 'brite'),
+        "index"   => 3,
+        "display" => false,
+        "meta"    => array(
+            "slug"    => "modern",
+            "version" => "v1"
+        )
+    ),
+
+    array(
+        'name'  => __("Classic", 'brite'),
+        "index" => 2,
+        "meta"  => array(
+            "slug"    => "classic",
+            "version" => "v1"
+        )
+    ),
+
+    array(
+        'name'  => __("Fullscreen", 'brite'),
+        "index" => 1,
+        "meta"  => array(
+            "slug"    => "fullscreen",
+            "version" => "v1"
+        )
+    ),
+);
+
+foreach ($default_front_page_designs as $design ) {
     if ( Utils::pathGet( $design, 'display', true ) ) {
         if ( Utils::pathGet( $design, 'meta.slug' ) === 'modern' ) {
             $brite_front_page_design = $design;

@@ -147,10 +147,6 @@ brite_theme()
 		'flex-width'  => true,
 		'width'       => 150,
 		'height'      => 70,
-	))
-	->register_menus(array(
-		'header-menu' => esc_html__('Header Menu', 'brite'),
-		'footer-menu' => esc_html__('Footer Menu', 'brite'),
 	));
 
 if (!apply_filters('colibri_page_builder/installed', false)) {
@@ -182,6 +178,13 @@ if (!apply_filters('colibri_page_builder/installed', false)) {
 			)
 		);
 }
+add_action('init', function() {
+    brite_theme()->register_menus(array(
+        'header-menu' => esc_html__('Header Menu', 'brite'),
+        'footer-menu' => esc_html__('Footer Menu', 'brite'),
+    ));
+
+}, 1);
 
 brite_assets()->registerTemplateStyle('brite-theme-extras', '/theme/extras.css', 'brite-theme');
 

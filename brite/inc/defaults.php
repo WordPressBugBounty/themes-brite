@@ -4,6 +4,37 @@ namespace ColibriWP\Theme\Defaults;
 
 $theme_directory_uri = get_template_directory_uri();
 
+add_action('init', function () {
+    add_filter('colibri_theme_title_default_content', function($title) {
+        $brite_theme_click_pen_to_edit_title = sprintf(
+            '<strong style="font-weight: 800;text-transform:uppercase">%s</strong> ' .
+            '<strong style="font-weight: 800; color: rgb(251, 192, 45);text-transform:uppercase">%s.</strong>' .
+            '<br>%s <span style="color: rgb(251, 192, 45);">%s!</span>',
+            __('This is your time to', 'brite'),
+            __('Shine', 'brite'),
+            __('Build your website', 'brite'),
+            __('with Brite', 'brite')
+        );
+
+
+        if (apply_filters('colibri_page_builder/installed', false)) {
+            $brite_theme_click_pen_to_edit_title = __(
+                'Just click and start typing to change the site headline.',
+                'brite'
+            );
+        }
+
+        return $brite_theme_click_pen_to_edit_title;
+    });
+    add_filter('colibri_theme_subtitle_default_content', function($subtitle) {
+        return  __(
+            'Start creating your website today.',
+            'brite'
+        );
+    });
+});
+
+
 $brite_theme_svg_icons = array(
     'fort-awesome'  => array(
         "name"    => "font-awesome/fort-awesome",
@@ -143,25 +174,7 @@ $brite_theme_divider_style = array(
     'zigzag'                         => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 5.8" preserveAspectRatio="none">  <path class="svg-white-bg" d="M5.4.4l5.4 5.3L16.5.4l5.4 5.3L27.5.4 33 5.7 38.6.4l5.5 5.4h.1L49.9.4l5.4 5.3L60.9.4l5.5 5.3L72 .4l5.5 5.3L83.1.4l5.4 5.3L94.1.4l5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.4 5.3L161 .4l5.4 5.3L172 .4l5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3L261 .4l5.4 5.3L272 .4l5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3L361 .4l5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.6-5.4 5.5 5.3L461 .4l5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1L550 .4l5.4 5.3L561 .4l5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2L650 .4l5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2L750 .4l5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.4h.2L850 .4l5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.4V0H-.2v5.8z"/></svg>',
 );
 
-$brite_theme_click_pen_to_edit_title = sprintf(
-    '<strong style="font-weight: 800;text-transform:uppercase">%s</strong> ' .
-        '<strong style="font-weight: 800; color: rgb(251, 192, 45);text-transform:uppercase">%s.</strong>' .
-        '<br>%s <span style="color: rgb(251, 192, 45);">%s!</span>',
-    __('This is your time to', 'brite'),
-    __('Shine', 'brite'),
-    __('Build your website', 'brite'),
-    __('with Brite', 'brite')
-);
 
-
-if (apply_filters('colibri_page_builder/installed', false)) {
-    $brite_theme_click_pen_to_edit_title = __(
-        'Just click and start typing to change the site headline.',
-        'brite'
-    );
-}
-
-$brite_theme_action_button = __('Action Button %d', 'brite');
 
 $brite_lorem_ipsum = "Start creating your website today.";;
 
@@ -180,7 +193,6 @@ return array(
     'blog_post_highlight_enabled'       => false,
     'blog_post_thumb_placeholder_color' => '#F79007',
     'assets_js_key'                     => "briteFrontendData",
-    'edit_this_text_in_customizer'      => $brite_theme_click_pen_to_edit_title,
     'default_icon'                      => $brite_theme_svg_icons['fort-awesome'],
     'icons'                             => $brite_theme_svg_icons,
     'divider_style'                     => $brite_theme_divider_style,
@@ -343,7 +355,7 @@ return array(
         ),
         "title"        => array(
             "show"  => true,
-            "value" => $brite_theme_click_pen_to_edit_title,
+            "value" => 'Just click and start typing to change the site headline.',
         ),
         "subtitle"     => array(
             "show"  => false,
@@ -502,46 +514,6 @@ return array(
             array(
                 'useFooterParallax' => false,
             ),
-        ),
-    ),
-
-    'front_page_designs' => array(
-
-        array(
-            'name'  => __("Modern", 'brite'),
-            "index" => 3,
-            "meta"  => array(
-                "slug"    => "modern",
-                "version" => "v2"
-            )
-        ),
-
-        array(
-            'name'    => __("Modern", 'brite'),
-            "index"   => 3,
-            "display" => false,
-            "meta"    => array(
-                "slug"    => "modern",
-                "version" => "v1"
-            )
-        ),
-
-        array(
-            'name'  => __("Classic", 'brite'),
-            "index" => 2,
-            "meta"  => array(
-                "slug"    => "classic",
-                "version" => "v1"
-            )
-        ),
-
-        array(
-            'name'  => __("Fullscreen", 'brite'),
-            "index" => 1,
-            "meta"  => array(
-                "slug"    => "fullscreen",
-                "version" => "v1"
-            )
         ),
     )
 );
